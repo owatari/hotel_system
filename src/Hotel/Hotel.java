@@ -72,7 +72,7 @@ public class Hotel {
 			for(int j = 0; j < quartos.get(i).size();j++) {
 				switch (j) {
 					case 0:
-						System.out.print(i+" - Nome: "+ quartos.get(i).get(j) +", ");
+						System.out.print((i+1)+" - Nome: "+ quartos.get(i).get(j) +", ");
 						break;
 					case 1:
 						System.out.print("Posição: "+ quartos.get(i).get(j) +", ");
@@ -100,37 +100,37 @@ public class Hotel {
 			case 1:
 				System.out.print("Insira o novo nome:");
 				String nome = teclado.nextLine();
-				clientes.get(a).set(b-1, nome);
+				clientes.get(a-1).set(b, nome);
 				break;
 			case 2:
 				System.out.print("Insira a nova data de nascimento:");
 				String data = teclado.nextLine();
-				clientes.get(a).set(b-1, data);
+				clientes.get(a-1).set(b, data);
 				break;
 			case 3:
 				System.out.print("Insira o novo e-mail:");
 				String email = teclado.nextLine();
-				clientes.get(a).set(b-1, email);
+				clientes.get(a-1).set(b, email);
 				break;
 			case 4:
 				System.out.print("Insira o novo telefone:");
 				String telefone = teclado.nextLine();
-				clientes.get(a).set(b-1, telefone);
+				clientes.get(a-1).set(b, telefone);
 				break;
 			case 5:
 				System.out.print("Insira a nova cidade:");
 				String cidade = teclado.nextLine();
-				clientes.get(a).set(b-1, cidade);
+				clientes.get(a-1).set(b, cidade);
 				break;
 			case 6:
 				System.out.print("Insira o novo UF:");
 				String uf = teclado.nextLine();
-				clientes.get(a).set(b-1, uf);
+				clientes.get(a-1).set(b, uf);
 				break;
 			case 7:
 				System.out.print("Fumante?");
 				String fumante = teclado.nextLine();
-				clientes.get(a).set(b-1, fumante);
+				clientes.get(-1).set(b, fumante);
 				break;
 		}
 		System.out.println("==================================================");
@@ -143,32 +143,32 @@ public class Hotel {
 			case 1:
 				System.out.print("Insira o novo nome:");
 				String nome = teclado.nextLine();
-				clientes.get(a).set(b-1, nome);
+				quartos.get(a-1).set((b-1), nome);
 				break;
 			case 2:
 				System.out.print("Insira a nova posição:");
 				String pos = teclado.nextLine();
-				clientes.get(a).set(b-1, pos);
+				quartos.get(a-1).set((b-1), pos);
 				break;
 			case 3:
 				System.out.print("Fumante?");
 				String fumante = teclado.nextLine();
-				clientes.get(a).set(b-1, fumante);
+				quartos.get(a-1).set((b-1), fumante);
 				break;
 			case 4:
 				System.out.print("Insira o novo valor:");
 				String valor = teclado.nextLine();
-				clientes.get(a).set(b-1, valor);
+				quartos.get(a-1).set((b-1), valor);
 				break;
 			case 5:
 				System.out.print("Insira a nova quantidade de quartos:");
 				String qntquartos = teclado.nextLine();
-				clientes.get(a).set(b-1, qntquartos);
+				quartos.get(a-1).set((b-1), qntquartos);
 				break;
 			case 6:
 				System.out.print("Insira a nova quantidade de pessoas:");
 				String qntpessoas = teclado.nextLine();
-				clientes.get(a).set(b-1, qntpessoas);
+				quartos.get(a-1).set((b-1), qntpessoas);
 				break;
 		}
 		System.out.println("==================================================");
@@ -181,7 +181,7 @@ public class Hotel {
 		System.out.println("==================================================");
 		for (int i = 0; i < quartos.size(); i++) {
 			if (quartos.get(i).get(6) == "0") {
-				System.out.print("Quarto: "+i+" - Nome: "+ quartos.get(i).get(0)+".");
+				System.out.print("Quarto: "+(i+1)+" - Nome: "+ quartos.get(i).get(0)+".");
 			}
 			System.out.println();
 		}		
@@ -193,7 +193,7 @@ public class Hotel {
 		System.out.println("==================================================");
 		for (int i = 0; i < quartos.size(); i++) {
 			if (quartos.get(i).get(6) == "1") {
-				System.out.print("Quarto: "+i+" - Nome: "+ quartos.get(i).get(0)+".");
+				System.out.print("Quarto: "+(i+1)+" - Nome: "+ quartos.get(i).get(0)+".");
 			}
 			System.out.println();
 		}		
@@ -312,17 +312,21 @@ public class Hotel {
 					System.out.println("Qual quarto será ocupado?");
 					listAvailable();
 					int a = teclado.nextInt();
-					quartos.get(a).set(6, "1");
+					quartos.get(a-1).set(6, "1");
 					System.out.println("Qual cliente estará ocupando o quarto?");
 					listCliente();
-					String b = teclado.nextLine();
-					quartos.get(a).set(7, b);
+					String b = teclado.next();
+					quartos.get(a-1).set(7, b);
+					System.out.println("------------------------------------------");
+					System.out.println("             Check-in realizado           ");
 				}else if (func.equals("2")){
 					System.out.println("Qual quarto será desocupado?");
 					listUnavailable();
 					int a = teclado.nextInt();
-					quartos.get(a).set(6, "0");
-					quartos.get(a).remove(7);
+					quartos.get(a-1).set(6, "0");
+					quartos.get(a-1).remove(7);
+					System.out.println("------------------------------------------");
+					System.out.println("             Check-out realizado           ");
 				}else {
 					System.out.println("Digite um número válido.");
 				}
