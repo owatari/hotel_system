@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Hotel {
 	public static ArrayList<ArrayList<String>> clientes = new ArrayList<>();
 	public static ArrayList<ArrayList<String>> quartos = new ArrayList<>();
-	//public static String quartos[][] = {};
 	
 	static void cadCliente(String a, String b, String c, String d, String e, String f, String g) {
 		int size = clientes.size();
@@ -42,7 +41,7 @@ public class Hotel {
 			for(int j = 0; j < clientes.get(i).size();j++) {
 				switch (j) {
 					case 0:
-						System.out.print(i+" - Nome: "+ clientes.get(i).get(j) +", ");
+						System.out.print((i+1)+" - Nome: "+ clientes.get(i).get(j) +", ");
 						break;
 					case 1:
 						System.out.print("Data de nascimento: "+ clientes.get(i).get(j) +", ");
@@ -100,37 +99,37 @@ public class Hotel {
 			case 1:
 				System.out.print("Insira o novo nome:");
 				String nome = teclado.nextLine();
-				clientes.get(a-1).set(b, nome);
+				clientes.get(a-1).set((b-1), nome);
 				break;
 			case 2:
 				System.out.print("Insira a nova data de nascimento:");
 				String data = teclado.nextLine();
-				clientes.get(a-1).set(b, data);
+				clientes.get(a-1).set((b-1), data);
 				break;
 			case 3:
 				System.out.print("Insira o novo e-mail:");
 				String email = teclado.nextLine();
-				clientes.get(a-1).set(b, email);
+				clientes.get(a-1).set((b-1), email);
 				break;
 			case 4:
 				System.out.print("Insira o novo telefone:");
 				String telefone = teclado.nextLine();
-				clientes.get(a-1).set(b, telefone);
+				clientes.get(a-1).set((b-1), telefone);
 				break;
 			case 5:
 				System.out.print("Insira a nova cidade:");
 				String cidade = teclado.nextLine();
-				clientes.get(a-1).set(b, cidade);
+				clientes.get(a-1).set((b-1), cidade);
 				break;
 			case 6:
 				System.out.print("Insira o novo UF:");
 				String uf = teclado.nextLine();
-				clientes.get(a-1).set(b, uf);
+				clientes.get(a-1).set((b-1), uf);
 				break;
 			case 7:
 				System.out.print("Fumante?");
 				String fumante = teclado.nextLine();
-				clientes.get(-1).set(b, fumante);
+				clientes.get(a-1).set((b-1), fumante);
 				break;
 		}
 		System.out.println("==================================================");
@@ -252,7 +251,7 @@ public class Hotel {
 					System.out.println("Qual cliente você deseja excluir?");
 					listCliente();
 					int a = teclado.nextInt();
-					clientes.remove(a);
+					clientes.remove(a-1);
 				}else {
 					System.out.println("Digite um número válido.");
 				}
@@ -297,7 +296,7 @@ public class Hotel {
 					System.out.println("Qual quarto você deseja excluir?");
 					listQuartos();
 					int a = teclado.nextInt();
-					quartos.remove(a);
+					quartos.remove(a-1);
 				}else {
 					System.out.println("Digite um número válido.");
 				}
@@ -337,5 +336,4 @@ public class Hotel {
 			}
 		}
 	}
-	
 }
